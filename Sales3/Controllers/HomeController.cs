@@ -23,6 +23,12 @@ namespace Sales3.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Sales Web MVC app from C# Course customized for Asp.NetCore 3";
+            ViewData["Author"] = "Raphael Costa";
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
