@@ -25,10 +25,14 @@ namespace Sales3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("Sales3Context");
+            var serverVersion=new MySqlServerVersion(new Version(8,0,25));
+
             services.AddControllersWithViews();
 
             services.AddDbContext<Sales3Context>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Sales3Context")));
+                    options.UseMySql(connectionString, serverVersion, builder => builder.MigrationsAssembly("Sales3")));
+                    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
