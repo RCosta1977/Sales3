@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sales3.Models
 {
@@ -6,13 +8,24 @@ namespace Sales3.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
-        //addSeller falta o seller
-
-        /*public double totalSales(DateTime initial, DateTime final)
+        public Department()
         {
-            return 0.0;
         }
-        */
+
+        public Department(int iD, string name)
+        {
+            ID = iD;
+            Name = name;
+        }
+        public void AddSeller(Seller seller)
+        {
+            Sellers.Add(seller);
+        }
+        public double TotalSales(DateTime initial, DateTime final)
+        {
+            return Sellers.Sum(seller => seller.TotalSales(initial, final));
+        }
     }
 }
