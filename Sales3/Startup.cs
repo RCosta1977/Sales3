@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Sales3.Data;
+using Sales3.Services;
 
 namespace Sales3
 {
@@ -32,7 +33,8 @@ namespace Sales3
 
             services.AddDbContext<Sales3Context>(options =>
                     options.UseMySql(connectionString, serverVersion, builder => builder.MigrationsAssembly("Sales3")));
-            services.AddScoped<SeedingService>();        
+            services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
