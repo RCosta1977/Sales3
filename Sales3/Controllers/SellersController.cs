@@ -19,7 +19,7 @@ namespace Sales3.Controllers
         public IActionResult Index()
         {
             var list = _sellerService.FindAll();
-
+                        
             return View(list);
         }
     }
