@@ -1,9 +1,7 @@
 ﻿using Sales3.Models;
 using Sales3.Models.Enums;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sales3.Data
 {
