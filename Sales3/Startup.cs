@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using Sales3.Data;
 using Sales3.Services;
+using System.Collections.Generic;
 
 namespace Sales3
 {
@@ -37,6 +40,14 @@ namespace Sales3
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService )
         {
+            var ptPt = new CultureInfo("pt-pt");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(ptPt),
+                SupportedCultures = new List<CultureInfo> { ptPt },
+                SupportedUICultures = new List<CultureInfo> { ptPt }
+            };
+            app.UseRequestLocalization(localizationOptions);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

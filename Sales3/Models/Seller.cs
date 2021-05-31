@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Sales3.Models
@@ -8,10 +9,16 @@ namespace Sales3.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+        [Display(Name ="Base Salary")]
+        [DisplayFormat(DataFormatString ="{0:C}€")]
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
+        [Display(Name ="Department ID")]
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
