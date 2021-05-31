@@ -8,12 +8,19 @@ namespace Sales3.Models
     public class Seller
     {
         public int Id { get; set; }
+        [Required(ErrorMessage ="{0} required")]
+        [StringLength(300, MinimumLength = 3, ErrorMessage ="{0} size should be between {2} and {1} carachters")]
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "{0} required")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+        [Required(ErrorMessage = "{0} required")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name ="Base Salary")]
         [DisplayFormat(DataFormatString ="{0:C}€")]
         public double BaseSalary { get; set; }
