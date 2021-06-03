@@ -22,7 +22,7 @@ namespace Sales3.Models
         [Required(ErrorMessage = "{0} required")]
         [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name ="Base Salary")]
-        [DisplayFormat(DataFormatString ="{0:C}€")]
+        [DisplayFormat(DataFormatString ="{0:C}")]
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
         [Display(Name ="Department ID")]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Sales3.Models.Enums;
 
 namespace Sales3.Models
@@ -7,6 +8,7 @@ namespace Sales3.Models
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public double Amount { get; set; }
         public SaleStatus Status { get; set; }
         public Seller Seller { get; set; }
