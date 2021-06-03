@@ -7,6 +7,7 @@ namespace Sales3.Models
     public class SalesRecord
     {
         public int Id { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [DisplayFormat(DataFormatString = "{0:C}")]
         public double Amount { get; set; }
